@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import subprocess
 import os
+import ctypes
 
 # ---------- CONFIG ----------
 APP_TITLE = "Script Runner"
@@ -16,10 +17,24 @@ SUBTEXT = "#aaaaaa"
 # ----------------------------
 
 
-def run_script(script_path):
+'''def run_script(script_path):
     subprocess.Popen(
         ["cmd.exe", "/c", script_path],
         creationflags=subprocess.CREATE_NEW_CONSOLE
+    )
+'''
+
+def run_script(script_path):
+    if not os.path.isfile(script_path):
+        raise FileNotFoundError(script_path)
+
+    ctypes.windll.shell32.ShellExecuteW(
+        None,
+        "runas",         
+        "cmd.exe",        
+        f'/c "{script_path}"',
+        None,
+        1
     )
 
 
@@ -78,6 +93,12 @@ def clear_content():
     for widget in content_frame.winfo_children():
         widget.destroy()
 
+
+def _on_mousewheel(event):
+    canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+
+
+canvas.bind_all("<MouseWheel>", _on_mousewheel)
 
 # ---------- TELAS ----------
 def show_categories():
@@ -144,13 +165,6 @@ def show_scripts(category_path, category_name):
             )
             btn.pack(fill="x", pady=4)
 
-
-# ---------- SCROLL COM MOUSE ----------
-def _on_mousewheel(event):
-    canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
-
-
-canvas.bind_all("<MouseWheel>", _on_mousewheel)
 
 # ---------- START ----------
 show_categories()
