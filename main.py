@@ -6,7 +6,7 @@ import os
 import ctypes
 
 # ---------- CONFIG ----------
-APP_TITLE = "Windows Debloat"
+APP_TITLE = "Windows Debulshit"
 WINDOW_SIZE = "660x540"
 SCRIPTS_DIR = "scripts"
 
@@ -24,12 +24,12 @@ FG_DANGER     = "#e57373"
 BORDER_COLOR  = "#333333"
 
 CATEGORY_ICONS = {
-    "Serviços":              "⚙️",
-    "Desempenho":            "⚡",
+    "Serviços":                "⚙️",
+    "Desempenho":              "⚡",
     "Telemetria e propaganda": "🛡️",
-    "Aparência":             "🎨",
-    "Privacidade":           "🔒",
-    "default":               "📁",
+    "Aparência":               "🎨",
+    "Privacidade":             "🔒",
+    "default":                 "📁",
 }
 # ----------------------------
 
@@ -191,7 +191,7 @@ toast_label = tk.Label(
 toast_label.pack(side="left", padx=10)
 
 tk.Label(
-    status_bar, text="Windows Debloat  •  github",
+    status_bar, text="windows-debullshit  •  github",
     fg=FG_SUBTEXT, bg=BG_SECONDARY,
     font=("Segoe UI", 8)
 ).pack(side="right", padx=10)
