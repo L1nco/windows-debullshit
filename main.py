@@ -1,7 +1,7 @@
+import sys
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
-import subprocess
 import os
 import ctypes
 
@@ -37,6 +37,9 @@ CATEGORY_ICONS = {
 def run_script(script_path):
     if not os.path.isfile(script_path):
         show_toast(f"Arquivo não encontrado:\n{script_path}", error=True)
+        return
+    if sys.platform != "win32":
+        show_toast("Execução disponível apenas no Windows.", error=True)
         return
     try:
         ctypes.windll.shell32.ShellExecuteW(
@@ -334,5 +337,6 @@ def show_scripts(category_path, category_name):
 
 
 # ---------- START ----------
-show_categories()
-root.mainloop()
+if __name__ == "__main__":
+    show_categories()
+    root.mainloop()
