@@ -6,10 +6,6 @@ The goal is to centralize common Windows tweaks into a clean, modular and easy t
 
 ---
 
-![windows-debullshit logo](assets/logo.png)
-
----
-
 ## Project goal
 
 - Run `.bat` scripts quickly
